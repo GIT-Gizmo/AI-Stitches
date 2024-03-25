@@ -51,7 +51,7 @@ const Customizer = () => {
             // Call our backend to generate an AI image
             setGeneratingImg(true);
 
-            const response = await fetch("https://ai-stitches.onrender.com/api/v1/ai", {
+            const response = await fetch("http://localhost:5000/api/v1/ai", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
