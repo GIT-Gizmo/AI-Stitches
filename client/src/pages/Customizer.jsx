@@ -44,6 +44,11 @@ const Customizer = () => {
         }
     }
 
+    // Toggle the selected editor tab
+    const toggleEditorTab = (tabName) => {
+        setActiveEditorTab((prevTab) => (prevTab === tabName ? '' : tabName));
+    }
+
     const handleSubmit = async (type) => {
         if (!prompt) return alert("Please enter a prompt!");
 
@@ -128,7 +133,8 @@ const Customizer = () => {
                                 <Tab
                                     key={tab.name}
                                     tab={tab}
-                                    handleClick={() => setActiveEditorTab(tab.name)}
+                                    handleClick={() => toggleEditorTab(tab.name)}
+                                    isActive={activeEditorTab === tab.name}
                                 />
                             ))}
                             {generateTabContent()}
