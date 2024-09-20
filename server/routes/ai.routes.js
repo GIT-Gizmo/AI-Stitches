@@ -4,19 +4,20 @@ import axios from "axios";
 const router = express.Router();
 
 router.route("/").get((req, res) => {
-    res.status(200).json({ message: "Hello from DALL.E Routes"});
+    res.status(200).json({ message: "Hello from AI-Stitches" });
 })
 
 router.post("/", async (req, res) => {
     const { prompt } = req.body;
+    const apiKey = process.env.RAPID_API_KEY;
 
     const options = {
         method: 'POST',
         url: 'https://imageai-generator.p.rapidapi.com/image',
         headers: {
-            'content-type': 'application/json',
-            'X-RapidAPI-Key': process.env.RAPID_API_KEY,
-            'X-RapidAPI-Host': 'imageai-generator.p.rapidapi.com'
+            'x-rapidapi-key': apiKey,
+            'x-rapidapi-host': 'imageai-generator.p.rapidapi.com',
+            'Content-Type': 'application/json'
         },
         data: {
             prompt: prompt,
